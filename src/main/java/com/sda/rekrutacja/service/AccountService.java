@@ -2,6 +2,7 @@ package com.sda.rekrutacja.service;
 
 import com.sda.rekrutacja.domain.Account;
 import com.sda.rekrutacja.dto.CreateAccountDto;
+import com.sda.rekrutacja.exeptions.AccountAlredyExistsExeption;
 import com.sda.rekrutacja.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class AccountService {
 
         boolean exists = repository.existsAccountByPesel(dto.getPesel());
         if(exists) {
-            throw  new IllegalArgumentException("Pesel juz istnieje");
+            throw new AccountAlredyExistsExeption("Pesel juz istnieje");
         }
 
         Account account = Account.builder()
