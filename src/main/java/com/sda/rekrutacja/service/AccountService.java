@@ -7,7 +7,9 @@ import com.sda.rekrutacja.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class AccountService {
@@ -31,9 +33,23 @@ public class AccountService {
                 .surname(dto.getSurname())
                 .pesel((dto.getPesel()))
                 .creationTime(TimeService.currentTime())
+                .value(new BigDecimal(0))
                 .build();
 
         repository.save(account);
         return account;
     }
+
+    public List<Account> getAllAccounts(){
+        return repository.findAll();
+
+    }
+
+    public Account findAccountByPesel (String pesel){
+        return repository.findAccountByPesel(pesel);
+    }
+
+
+
+
 }

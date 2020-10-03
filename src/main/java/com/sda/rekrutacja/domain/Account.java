@@ -27,7 +27,7 @@ public class Account {
     private String name;
     private String surname;
     private String pesel;
-    private BigDecimal AccountValue;
+    private BigDecimal value;
     private LocalDateTime creationTime;
 
 

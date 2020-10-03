@@ -11,4 +11,6 @@ public interface AccountRepository extends JpaRepository<Account, String> {
 
    boolean existsAccountByPesel(String pesel);
 
+   Account findAccountByPesel (String pesel);
+
 }
